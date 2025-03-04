@@ -6,7 +6,7 @@ services:
     env_file:
       - db.env
     volumes:
-      - db:~/var/db/lib/postgres/data
+      - db:/var/lib/postgres/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U developers"]
       interval: 5s
