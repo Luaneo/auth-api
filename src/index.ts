@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./routes/index.js";
+import { runMigrations } from "./db/migrations.js";
 
 const app = express();
 const PORT = 3000;
@@ -7,6 +8,8 @@ const PORT = 3000;
 app.use(express.json());
 app.use("/api", authRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+runMigrations().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+})

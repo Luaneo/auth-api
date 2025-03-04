@@ -1,19 +1,88 @@
 # auth-api
 
-## Running locally
+### Environment requirements
 
-Spin up a Postgres docker container
+`.env` file requires the `DATABASE_URL` key
+
+`db.env` file requires the following keys:
+
+- POSTGRES_PASSWORD
+- POSTGRES_USER
+- POSTGRES_DB
+
+### Spinning up a Docker compose stack
 
 ```
-docker pull postgres
-docker run --name <container-name> -e POSTGRES_PASSWORD=<db-password> -e POSTGRES_USER=<db-user> -e POSTGRES_DB=<db-name> -d -p 5432:5432 postgres
+docker compose up --build
 ```
 
-Run the server
+## Available routes
 
+The following HTTP routes are available using port 13000
+
+### `api/register`
+
+Request payload schema:
+
+```ts
+{
+    username: string;
+    email: string;
+    password: string;
+}
 ```
-cd auth-api
-npm i
-npm run build
-npm run start
+
+Response (code 201) payload schema:
+
+```ts
+{
+    message: "User registered successfully";
+}
+```
+
+Response (code 400) payload schema:
+
+```ts
+{
+    message: "User already exists"
+}
+```
+
+Response (code 500) payload schema:
+
+```ts
+{
+    message: "Internal server error"
+}
+```
+
+### `api/login`
+
+Request payload schema:
+
+```ts
+{
+    email: string;
+    password: string;
+}
+```
+
+Response (code 200) payload schema:
+
+```ts
+{
+    message: "Login successful";
+    user: {
+        id: number;
+        username: string;
+        email: string;
+    }
+}
+```
+
+Response (code 400) payload schema:
+```ts
+{
+    message: "User not found" | "Invalid password";
+}
 ```
