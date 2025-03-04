@@ -45,6 +45,9 @@ Response (code 400) payload schema:
 ```ts
 type _ = {
     message: "User already exists";
+} | {
+    message: "Validation error";
+    error: string;
 }
 ```
 
@@ -84,5 +87,8 @@ Response (code 400) payload schema:
 ```ts
 type _ = {
     message: "User not found" | "Invalid password";
+} | {
+    message: "Validation error";
+    error: string;
 }
 ```
