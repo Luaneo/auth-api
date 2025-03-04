@@ -25,7 +25,7 @@ The following HTTP routes are available using port 13000
 Request payload schema:
 
 ```ts
-{
+type _ = {
     username: string;
     email: string;
     password: string;
@@ -35,7 +35,7 @@ Request payload schema:
 Response (code 201) payload schema:
 
 ```ts
-{
+type _ = {
     message: "User registered successfully";
 }
 ```
@@ -43,16 +43,16 @@ Response (code 201) payload schema:
 Response (code 400) payload schema:
 
 ```ts
-{
-    message: "User already exists"
+type _ = {
+    message: "User already exists";
 }
 ```
 
 Response (code 500) payload schema:
 
 ```ts
-{
-    message: "Internal server error"
+type _ = {
+    message: "Internal server error";
 }
 ```
 
@@ -61,7 +61,7 @@ Response (code 500) payload schema:
 Request payload schema:
 
 ```ts
-{
+type _ = {
     email: string;
     password: string;
 }
@@ -70,7 +70,7 @@ Request payload schema:
 Response (code 200) payload schema:
 
 ```ts
-{
+type _ = {
     message: "Login successful";
     user: {
         id: number;
@@ -82,7 +82,7 @@ Response (code 200) payload schema:
 
 Response (code 400) payload schema:
 ```ts
-{
+type _ = {
     message: "User not found" | "Invalid password";
 }
 ```
