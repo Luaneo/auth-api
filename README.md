@@ -6,9 +6,9 @@
 
 `db.env` file requires the following keys:
 
-- POSTGRES_PASSWORD
-- POSTGRES_USER
-- POSTGRES_DB
+- `POSTGRES_PASSWORD`
+- `POSTGRES_USER`
+- `POSTGRES_DB`
 
 ### Spinning up a Docker compose stack
 
